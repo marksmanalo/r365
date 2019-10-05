@@ -26,11 +26,11 @@ namespace StringCalculatorTests
         [TestMethod]
         public void TwoInputs()
         {
-            var expectedResult = new List<int>() { 1, 5000 };
+            var expectedResult = new List<int>() { 1, 500 };
 
             var parser = new Parser();
 
-            var result = parser.Parse("1,5000");
+            var result = parser.Parse("1,500");
 
             Assert.IsTrue(expectedResult.SequenceEqual(result));
 
@@ -66,11 +66,11 @@ namespace StringCalculatorTests
         public void MoreThanTwoInputs()
         {
 
-            var expectedResult = new List<int>() { 1, 5000, 3, 4, 0 };
+            var expectedResult = new List<int>() { 1, 1000, 3, 4, 0 };
 
             var parser = new Parser();
 
-            var result = parser.Parse("1,5000,3,4,rtr");
+            var result = parser.Parse("1,1000,3,4,rtr");
 
             Assert.IsTrue(expectedResult.SequenceEqual(result));
 
@@ -112,6 +112,20 @@ namespace StringCalculatorTests
             var parser = new Parser();
 
             parser.Parse("-5,-4,-3,6");
+
+        }
+
+        [TestMethod]
+        public void OneThousandIsMaxNumber()
+        {
+
+            var expectedResult = new List<int>() { 2, 0, 6 };
+
+            var parser = new Parser();
+
+            var result = parser.Parse("2,1001,6");
+
+            Assert.IsTrue(expectedResult.SequenceEqual(result));
 
         }
     }

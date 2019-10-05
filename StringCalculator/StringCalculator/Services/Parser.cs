@@ -10,6 +10,7 @@ namespace StringCalculator.Services
     {
 
         private readonly string[] delimiters = new [] { ",", "\\n" };
+        private const int maxNumber = 1000;
 
         public List<int> Parse(string stringToParse)
         {
@@ -19,7 +20,7 @@ namespace StringCalculator.Services
 
             foreach (var numberString in parsedString)
             {
-                if (Int32.TryParse(numberString, out int number))
+                if (Int32.TryParse(numberString, out int number) && number <= maxNumber)
                 {
                     if (number >= 0)
                     {
