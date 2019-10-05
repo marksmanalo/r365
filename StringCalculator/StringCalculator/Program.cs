@@ -33,7 +33,7 @@ namespace StringCalculator
         private static string PromptTheUser() {
 
             Console.WriteLine("String Calcualtor!\n\n");
-            Console.WriteLine("Enter your numbers to add separated by a comma");
+            Console.WriteLine("Enter your numbers to add");
 
             return Console.ReadLine();
 

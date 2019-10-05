@@ -66,11 +66,11 @@ namespace StringCalculatorTests
         public void MoreThanTwoInputs()
         {
 
-            var expectedResult = new List<int>() { 1, 5000, -3, 4, 0 };
+            var expectedResult = new List<int>() { 1, 5000, 3, 4, 0 };
 
             var parser = new Parser();
 
-            var result = parser.Parse("1,5000,-3,4,rtr");
+            var result = parser.Parse("1,5000,3,4,rtr");
 
             Assert.IsTrue(expectedResult.SequenceEqual(result));
 
@@ -101,6 +101,17 @@ namespace StringCalculatorTests
             var result = parser.Parse("1\\n2,3");
 
             Assert.IsTrue(expectedResult.SequenceEqual(result));
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void NegativeNumbers()
+        {
+
+            var parser = new Parser();
+
+            parser.Parse("-5,-4,-3,6");
 
         }
     }
