@@ -2,6 +2,6 @@
 {
     public interface IStringCalculator
     {
-        string HelloWorld();
+        int Add(string rawInputString);
     }
 }

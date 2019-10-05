@@ -10,21 +10,41 @@ namespace StringCalculator
 {
     class Program
     {
+
+        private static UnityContainer container;
    
         static void Main(string[] args)
         {
 
-            var container = new UnityContainer();
-
-            container.RegisterType<IParser, Parser>();
+            SetupDependencyInjectionContainer();
 
             var calculator = container.Resolve<MarksStringCalculator>();
 
-            var temp = calculator.HelloWorld();
+            var enteredString = PromptTheUser();
 
-            Console.WriteLine(temp);
+            var sum = calculator.Add(enteredString);
 
+            Console.WriteLine("The sum is: {0}", sum);
+
+            Console.WriteLine("Press any key to exit");
             Console.ReadLine();
+        }
+
+        private static string PromptTheUser() {
+
+            Console.WriteLine("String Calcualtor!\n\n");
+            Console.WriteLine("Enter your numbers to add separated by a comma");
+
+            return Console.ReadLine();
+
+        }
+
+        private static void SetupDependencyInjectionContainer() {
+
+            container = new UnityContainer();
+
+            container.RegisterType<IParser, Parser>();
+
         }
     }
 }

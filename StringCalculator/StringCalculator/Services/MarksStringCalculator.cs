@@ -15,9 +15,19 @@ namespace StringCalculator.Services
             _parser = parser;
         }
 
-        public string HelloWorld()
+        public int Add(string rawInputString)
         {
-            return _parser.Parse();
+
+            var sum = 0;
+            var numbersToAdd = _parser.Parse(rawInputString);
+
+            foreach ( var number in numbersToAdd )
+            {
+                sum += number;
+            }
+
+            return sum;
         }
+
     }
 }
