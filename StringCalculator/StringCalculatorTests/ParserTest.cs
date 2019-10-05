@@ -89,5 +89,19 @@ namespace StringCalculatorTests
             Assert.IsTrue(expectedResult.SequenceEqual(result));
 
         }
+
+        [TestMethod]
+        public void InputWithNewLineDelimiter()
+        {
+
+            var expectedResult = new List<int>() { 1, 2, 3 };
+
+            var parser = new Parser();
+
+            var result = parser.Parse("1\\n2,3");
+
+            Assert.IsTrue(expectedResult.SequenceEqual(result));
+
+        }
     }
 }

@@ -9,12 +9,12 @@ namespace StringCalculator.Services
     public class Parser : IParser
     {
 
-        private readonly char[] delimiters = new char[] { ',' };
+        private readonly string[] delimiters = new [] { ",", "\\n" };
 
         public List<int> Parse(string stringToParse)
         {
             var numbers = new List<int>();
-            var parsedString = stringToParse.Split(delimiters);
+            var parsedString = stringToParse.Split(delimiters, StringSplitOptions.None);
 
             foreach (var numberString in parsedString)
             {
