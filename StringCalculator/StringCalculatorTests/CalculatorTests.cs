@@ -46,5 +46,19 @@ namespace StringCalculatorTests
             var result = calculator.Add("4,-3");
             Assert.AreEqual(1, result);
         }
+
+        [TestMethod]
+        public void AlotOfInputs()
+        {
+            var expectedResult = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+            var mockParser = new Mock<IParser>();
+            mockParser.Setup(x => x.Parse(It.IsAny<string>())).Returns(expectedResult);
+
+            var calculator = new MarksStringCalculator(mockParser.Object);
+
+            var result = calculator.Add("1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12");
+            Assert.AreEqual(78, result);
+        }
+
     }
 }

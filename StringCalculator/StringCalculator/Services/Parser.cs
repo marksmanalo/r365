@@ -10,7 +10,6 @@ namespace StringCalculator.Services
     {
 
         private readonly char[] delimiters = new char[] { ',' };
-        private const int maxInputs = 2;
 
         public List<int> Parse(string stringToParse)
         {
@@ -26,11 +25,6 @@ namespace StringCalculator.Services
                 else {
                     numbers.Add(0);
                 }
-            }
-
-            if (numbers.Count > maxInputs)
-            {
-                throw new Exception("Exceeded maximum number of inputs!");
             }
 
             return numbers;
