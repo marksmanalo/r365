@@ -8,5 +8,6 @@ namespace StringCalculator.Services
 {
     public interface IParser
     {
+        string Parse();
     }
 }

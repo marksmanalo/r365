@@ -1,6 +1,6 @@
 ﻿namespace StringCalculator.Services
 {
-    internal interface IStringCalculator
+    public interface IStringCalculator
     {
         string HelloWorld();
     }

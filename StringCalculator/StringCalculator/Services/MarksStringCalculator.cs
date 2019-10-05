@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StringCalculator.Services
 {
-    class MarksStringCalculator : IStringCalculator
+    public class MarksStringCalculator : IStringCalculator
     {
 
         private readonly IParser _parser;
@@ -17,7 +17,7 @@ namespace StringCalculator.Services
 
         public string HelloWorld()
         {
-            return "Hello World";
+            return _parser.Parse();
         }
     }
 }

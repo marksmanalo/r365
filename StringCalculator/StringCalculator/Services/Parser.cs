@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace StringCalculator.Services
 {
-    public class Parser: IParser
+    public class Parser : IParser
     {
+        public string Parse()
+        {
+            return "Hello World";
+        }
     }
 }
