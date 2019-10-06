@@ -168,5 +168,19 @@ namespace StringCalculatorTests
 
         }
 
+        [TestMethod]
+        public void CustomDelimiterInsideBrackets()
+        {
+
+            var expectedResult = new List<int>() {11, 22, 33 };
+
+            var parser = new Parser();
+
+            var result = parser.Parse("//[***]\\n11***22***33");
+
+            Assert.IsTrue(expectedResult.SequenceEqual(result));
+
+        }
+
     }
 }

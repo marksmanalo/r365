@@ -44,14 +44,23 @@ namespace StringCalculator.Services
 
             var unparsedCustomDelimiter = parsedString[0];
 
-            var match = Regex.Match(unparsedCustomDelimiter, @"(?<=\/\/)(.*)");
+            var singleDelimiter = @"(?<=\/\/)(.*)";
+            var squareBrackets = @"\[(.*?)\]";
+
+            string[] patterns = { squareBrackets, singleDelimiter };
             var customDelimiter = "";
 
-            if (match.Success)
+            foreach (var pattern in patterns)
             {
-                customDelimiter = match.Groups[1].Value;
+                var match = Regex.Match(unparsedCustomDelimiter, pattern);
+                if (match.Success)
+                {
+                    customDelimiter = match.Groups[1].Value;
+                    break;
+                }
             }
-            else
+
+            if (string.IsNullOrWhiteSpace(customDelimiter))
             {
                 throw new Exception("Invalid input");
             }
