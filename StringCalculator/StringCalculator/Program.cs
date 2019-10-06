@@ -23,8 +23,9 @@ namespace StringCalculator
             var enteredString = PromptTheUser();
 
             var sum = calculator.Add(enteredString);
+            var numbersCalculated = calculator.CalculationString;
 
-            Console.WriteLine("The sum is: {0}", sum);
+            Console.WriteLine($"{numbersCalculated} = {sum}");
 
             Console.WriteLine("Press any key to exit");
             Console.ReadLine();

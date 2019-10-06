@@ -60,5 +60,19 @@ namespace StringCalculatorTests
             Assert.AreEqual(78, result);
         }
 
+        [TestMethod]
+        public void GetCalculatedNumbers()
+        {
+            var expectedResult = new List<int>() { 2, 0, 4, 0, 0, 6 };
+            var mockParser = new Mock<IParser>();
+            mockParser.Setup(x => x.Parse(It.IsAny<string>())).Returns(expectedResult);
+
+            var calculator = new MarksStringCalculator(mockParser.Object);
+
+            calculator.Add("2,,4,rrrr,1001,6");
+            var result = calculator.CalculationString;
+            Assert.AreEqual("2+0+4+0+0+6", result);
+        }
+
     }
 }
