@@ -128,5 +128,45 @@ namespace StringCalculatorTests
             Assert.IsTrue(expectedResult.SequenceEqual(result));
 
         }
+
+        [TestMethod]
+        public void CustomDelimiter()
+        {
+
+            var expectedResult = new List<int>() { 2, 5 };
+
+            var parser = new Parser();
+
+            var result = parser.Parse("//#\\n2#5");
+
+            Assert.IsTrue(expectedResult.SequenceEqual(result));
+
+        }
+
+        [TestMethod]
+        public void CustomDelimiterWithInvalidNumbers()
+        {
+
+            var expectedResult = new List<int>() { 2, 0, 100 };
+
+            var parser = new Parser();
+
+            var result = parser.Parse("//,\\n2,ff,100");
+
+            Assert.IsTrue(expectedResult.SequenceEqual(result));
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void InvalidCustomParser_NoNumbersGiven()
+        {
+
+            var parser = new Parser();
+
+            parser.Parse("//#");
+
+        }
+
     }
 }
