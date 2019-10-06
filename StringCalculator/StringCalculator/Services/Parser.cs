@@ -48,24 +48,28 @@ namespace StringCalculator.Services
             var squareBrackets = @"\[(.*?)\]";
 
             string[] patterns = { squareBrackets, singleDelimiter };
-            var customDelimiter = "";
+            List<string> customDelimiters = new List<string> { };
 
             foreach (var pattern in patterns)
             {
-                var match = Regex.Match(unparsedCustomDelimiter, pattern);
-                if (match.Success)
+                var matches = Regex.Matches(unparsedCustomDelimiter, pattern);
+                if (matches.Count > 0)
                 {
-                    customDelimiter = match.Groups[1].Value;
+                    for (int i = 0; i < matches.Count; i++)
+                    {
+                       customDelimiters.Add(matches[i].Groups[1].Value);
+                    }
                     break;
                 }
+
             }
 
-            if (string.IsNullOrWhiteSpace(customDelimiter))
+            if (customDelimiters.Count == 0)
             {
                 throw new Exception("Invalid input");
             }
 
-            parsedNumbers = parsedString[1].Split(new[] { customDelimiter }, StringSplitOptions.None);
+            parsedNumbers = parsedString[1].Split(customDelimiters.ToArray(), StringSplitOptions.None);
 
             return parsedNumbers;
         }

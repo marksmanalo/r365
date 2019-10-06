@@ -182,5 +182,19 @@ namespace StringCalculatorTests
 
         }
 
+        [TestMethod]
+        public void MultipleCustomDelimiters()
+        {
+
+            var expectedResult = new List<int>() { 11, 22, 0, 33, 44 };
+
+            var parser = new Parser();
+
+            var result = parser.Parse("//[*][!!][r9r]\\n11r9r22*hh*33!!44");
+
+            Assert.IsTrue(expectedResult.SequenceEqual(result));
+
+        }
+
     }
 }
